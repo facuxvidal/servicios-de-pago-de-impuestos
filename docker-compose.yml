@@ -1,0 +1,13 @@
+version: '3.9'
+services: 
+    api:
+        build: 
+            context: .
+        volumes:
+            - ./app:/app
+        ports: 
+            - "8081:80"
+        command: python -m hypercorn main:app --bind 0.0.0.0:80 --reload --debug
+        environment: 
+            - PYTHONUNBUFFERED=1
+            - TZ=America/Argentina/Buenos_Aires
